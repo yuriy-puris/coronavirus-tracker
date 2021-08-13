@@ -1,14 +1,7 @@
 import 'package:quizz/services/api_keys.dart';
 import 'package:flutter/foundation.dart';
 
-
-enum Endpoint {
-  cases,
-  casesSuspected,
-  casesConfirmed,
-  deaths,
-  recovered
-}
+enum Endpoint { cases, casesSuspected, casesConfirmed, deaths, recovered }
 
 class API {
   API({@required this.apiKey});
@@ -20,18 +13,14 @@ class API {
   static final int port = 443;
   static final String basePath = 't/nubentos.com/ncovapi/1.0.0';
 
-  Uri tokenUri() => Uri(
-    scheme: 'https',
-    host: host,
-    path: 'token'
-  );
+  Uri tokenUri() => Uri(scheme: 'https', host: host, path: 'token');
 
   Uri endpointUri(Endpoint endpoint) => Uri(
-    scheme: 'https',
-    host: host,
-    port: port,
-    path: '$basePath/${_paths[endpoint]}',
-  );
+        scheme: 'https',
+        host: host,
+        port: port,
+        path: '${_paths[endpoint]}',
+      );
 
   static Map<Endpoint, String> _paths = {
     Endpoint.cases: 'cases',
